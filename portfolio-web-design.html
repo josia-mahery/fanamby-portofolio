@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andriamanarivo Fanamby</title>
+    <style>
+        :root {
+            --bg-primary: #0A0E17;
+            --bg-secondary: #151A28;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --accent-cyan: #00F0FF;
+            --accent-magenta: #FF00E5;
+            --accent-green: #00FF9D;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+        h3 { font-size: 1.5rem; }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-magenta));
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            background: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 300;
+            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-cyan);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .hero-content h1 {
+            margin-bottom: 1.5rem;
+            font-size: 4rem;
+            font-weight: 200;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            background: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+        }
+
+        .about {
+            background: var(--bg-secondary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(45deg, var(--bg-primary), var(--bg-secondary));
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .data-node {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .warning-box {
+            background: rgba(255, 0, 229, 0.1);
+            border: 1px solid var(--accent-magenta);
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 5px;
+        }
+
+        .warning-box h4 {
+            color: var(--accent-magenta);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .process-steps {
+            display: grid;
+            gap: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            position: relative;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            border-left: 3px solid var(--accent-cyan);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .portfolio {
+            background: var(--bg-secondary);
+        }
+
+        .portfolio-notice {
+            text-align: center;
+            background: rgba(0, 255, 157, 0.1);
+            border: 1px solid var(--accent-green);
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            border-radius: 5px;
+        }
+
+        .portfolio-notice h4 {
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-card {
+            background: var(--bg-primary);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-cyan);
+        }
+
+        .card-image {
+            height: 200px;
+            background: linear-gradient(45deg, #1a1f2e, #2d3748);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent-cyan);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 23, 0.95);
+            z-index: 2000;
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: var(--bg-primary);
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--accent-magenta);
+            transform: rotate(90deg);
+        }
+
+        .modal-hero {
+            height: 400px;
+            background: linear-gradient(45deg, #1a1f2e, #2d3748);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 3rem;
+        }
+
+        .project-overview {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-meta {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            height: fit-content;
+        }
+
+        .meta-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .meta-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .meta-label {
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-section {
+            margin-bottom: 4rem;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .research-item {
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .research-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .research-image {
+            height: 200px;
+            background: linear-gradient(45deg, #2d3748, #4a5568);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .research-content {
+            padding: 1.5rem;
+        }
+
+        .moodboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .moodboard-item {
+            height: 150px;
+            background: linear-gradient(45deg, #2d3748, #4a5568);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 1rem;
+            left: 0;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-bottom-color: var(--accent-cyan);
+        }
+
+        .form-group input:focus + label,
+        .form-group textarea:focus + label,
+        .form-group input:valid + label,
+        .form-group textarea:valid + label {
+            top: -0.5rem;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+        }
+
+        .submit-btn {
+            background: transparent;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 1rem 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            color: var(--accent-cyan);
+        }
+
+        .moodboard-item {
+            height: 200px;
+            background: linear-gradient(45deg, #2d3748, #4a5568);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .moodboard-item:hover {
+            transform: scale(1.05);
+            z-index: 2;
+        }
+
+        .moodboard-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .moodboard-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            text-align: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .moodboard-item:hover .moodboard-caption {
+            opacity: 1;
+        }
+
+        .research-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-image {
+            height: 200px;
+            background: linear-gradient(45deg, #1a1f2e, #2d3748);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-overview {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .moodboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modal-body {
+                padding: 2rem 1rem;
+            }
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">Andriamanarivo Fanamby</div>
+            <div class="nav-links">
+                <a href="#about">À Propos</a>
+                <a href="#process">Processus</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>SYSTEM INITIALIZED.</h1>
+                <p class="hero-subtitle">
+                    Bienvenue dans le laboratoire d'Andriamanarivo Fanamby Web Designer spécialisé dans la conception d'interfaces avant-gardistes et d'expériences utilisateur tournées vers l'avenir.
+                </p>
+                <a href="#portfolio" class="cta-button">EXPLORER LE PORTFOLIO</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">À Propos</h2>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>L'esprit derrière l'interface</h3>
+                    <p>Je conçois là où l'intuition humaine rencontre l'élégance algorithmique. Mon travail est une exploration constante de l'équilibre entre la forme pure et la fonction innovante.</p>
+                    
+                    <h4 style="margin-top: 2rem;">Philosophie de Conception :</h4>
+                    <p>Clarté, Purpose, Innovation. Chaque pixel a une intention. Chaque interaction a un sens.</p>
+                    
+                    <div class="warning-box">
+                        <h4>⚠️ AVIS IMPORTANT</h4>
+                        <p>Les projets présentés ici sont des <strong>propositions entièrement conceptuelles</strong>. Ils sont le terrain de jeu où j'explore de nouvelles idées, pousse les limites des technologies émergentes et imagine les possibilités de demain, libéré des contraintes du brief client.</p>
+                    </div>
+                </div>
+                <div class="about-visual" id="dataVisualization">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process">
+        <div class="container">
+            <h2 class="section-title">Processus de création</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h3>PHASE 01 : DISSECTION & DIAGNOSTIC</h3>
+                    <p>Analyse du contexte, de la cible et des objectifs. Le problème est décomposé en données structurées pour une compréhension systémique.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h3>PHASE 02 : ARCHITECTURE NEURALE</h3>
+                    <p>Structuration de l'information et premiers wireframes. Création d'un squelette numérique qui s'organise de manière organique, comme un réseau neuronal.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h3>PHASE 03 : SKIN & SYSTEM</h3>
+                    <p>Design visuel, palette de couleurs, typographie et création du Design System. La peau recouvre progressivement l'architecture sous-jacente.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h3>PHASE 04 : BREATHING PROTOTYPE</h3>
+                    <p>Prototypage interactif et haute-fidélité. Le modèle devient réactif, avec des flux de données qui circulent entre les différents modules.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <h3>PHASE 05 : SYNTHESIS & DELIVERY</h3>
+                    <p>Livraison des assets et collaboration avec le développement. Le concept se matérialise en produit fonctionnel, prêt pour l'implémentation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Portfolio</h2>
+            
+            <div class="portfolio-notice">
+                <h4>[ NOTICE ]</h4>
+                <p>Ce laboratoire présente des <strong>concepts exploratoires</strong>. Ces projets sont des exercices de style et d'innovation, conçus pour repousser les limites créatives et techniques du web design.</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-card" data-project="nexus">
+                    <div class="card-image">
+                        <img src="./me.on/Capture d'écran 2025-11-16 202206.png" alt="Me.On">
+                    </div>
+                    <div class="card-content">
+                        <h3>Me.On</h3>
+                        <p>Une Plateforme d'entraide entre étudiants</p>
+                        <div class="card-tags">
+                            <span class="tag">UI/UX Concept</span>
+                            <span class="tag">Moderne</span>
+                            <span class="tag">Design System</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card" data-project="atom">
+                    <div class="card-image">
+                        <img src="./stellar/Capture d'écran 2025-11-16 201403.png" alt="Stellar Z">
+                    </div>
+                    <div class="card-content">
+                        <h3>Stellar Z</h3>
+                        <p>Plateforme de gestion financière avec visualisation de données immersive.</p>
+                        <div class="card-tags">
+                            <span class="tag">UX/UI concept</span>
+                            <span class="tag">Moderne</span>
+                            <span class="tag">Design System</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <p>Le futur se construit par la collaboration. Si ma vision de la conception digitale résonne avec la vôtre, ouvrons un canal de communication.</p>
+                <p style="margin-top: 1rem;"><strong>Discutons de votre prochain projet.<br>Parlons des possibilités de demain.</strong></p>
+            </div>
+
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" required>
+                    <label for="name">Nom Complet</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" required>
+                    <label for="email">Adresse Email</label>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" required></textarea>
+                    <label for="message">Votre Message</label>
+                </div>
+                <button type="submit" class="submit-btn">[ CONTACTER ]</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="margin-bottom: 1rem;">ALEXANDRE K.</div>
+            <div class="social-links">
+                <a href="#" class="social-link">fanambyandriamanarivo@gmail.com</a>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                &copy; 2024 Alexandre K. Tous droits réservés.
+            </p>
+        </div>
+    </footer>
+
+    <div id="projectModal" class="project-modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-hero" id="modalHero">
+            </div>
+            <div class="modal-body">
+                <div class="project-overview">
+                    <div>
+                        <h2 id="projectTitle">NEXUS OS</h2>
+                        <p id="projectDescription" class="project-description"></p>
+                    </div>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <div class="meta-label">STATUT</div>
+                            <div id="projectStatus">Concept Exploration</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label">DURÉE</div>
+                            <div id="projectDuration">6 semaines</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label">DOMAINES</div>
+                            <div id="projectDomains">UI/UX, Design System, Interaction</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label">OUTILS</div>
+                            <div id="projectTools">Figma, Blender, After Effects, WebGL</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-section">
+                    <h3>Recherche & Exploration</h3>
+                    <p id="projectResearch"></p>
+                    
+                    <div class="research-grid" id="researchGrid">
+                        <div class="research-item">
+                            <div class="research-image">Analyse des tendances</div>
+                            <div class="research-content">
+                                <h4>Tendances Émergentes</h4>
+                                <p>Étude des interfaces spatiales et de la réalité augmentée</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-image">User Journey Map</div>
+                            <div class="research-content">
+                                <h4>Cartographie utilisateur</h4>
+                                <p>Analyse des parcours utilisateurs complexes</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-image">Benchmark Technique</div>
+                            <div class="research-content">
+                                <h4>Technologies explorées</h4>
+                                <p>WebGL, Three.js, APIs spatiales</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-section">
+                    <h3>Direction Artistique & Moodboard</h3>
+                    <p id="projectMoodboard"></p>
+                    
+                    <div class="moodboard-grid" id="moodboardGrid">
+                        <div class="moodboard-item">Référence 1</div>
+                        <div class="moodboard-item">Référence 2</div>
+                        <div class="moodboard-item">Palette couleurs</div>
+                        <div class="moodboard-item">Typographie</div>
+                        <div class="moodboard-item">Texture</div>
+                        <div class="moodboard-item">Lumières</div>
+                    </div>
+                </div>
+
+                <div class="research-section">
+                    <h3>Défis Créatifs & Solutions</h3>
+                    <div id="projectChallenges"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const projects = {
+            nexus: {
+                title: "Me.On",
+                description: "Une plateforme collaborative pour que les étudiants puissent échanger, s'entraider et réussir ensemble.",
+                status: "Concept Exploration",
+                duration: "1 semaines",
+                domains: "UI/UX, Design System",
+                tools: "Figma",
+                moodboard: "Interface épurée avec mode sombre (bleu nuit/violet) et mode clair (blanc/violet). Navigation par sidebar, illustrations flat et ombres douces pour la hiérarchie.",
+                heroImage: "./me.on/Capture d'écran 2025-11-16 202206.png",
+                researchItems: [
+                    
+                ],
+                moodboardItems: [
+                    {
+                        image: "./me.on/07658c342a69ea28744a755f8ecc1f94.jpg",
+                        caption: " "
+                    },
+                    {
+                        image: "./me.on/11811f1fb5dc360e122452ced1039ba1.jpg",
+                        caption: " "
+                    },
+                    {
+                        image: "./me.on/1715850363099.jpg",
+                        caption: " "
+                    },
+                    {
+                        image: "./me.on/Captura_fr_point.PNG",
+                        caption: " "
+                    }
+                ],
+                challenges: `
+                    <div class="research-grid">
+                        <div class="research-item">
+                            <div class="research-content">
+                                <h4>Navigation intuitive</h4>
+                                <p>Concevoir un système de navigation simple et prévisible entre les différentes sections de la plateforme.</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-content">
+                                <h4>Performance</h4>
+                                <p>Assurer des temps de chargement rapides et une expérience fluide sur tous les appareils.</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-content">
+                                <h4>Accessibilité</h4>
+                                <p>Garantir une interface utilisable par tous, respectant les standards d'accessibilité web.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            atom: {
+                title: "Stellar Z",
+                description: "Site de presentation d'un produit phare d'un entreprise qui vend des VTT",
+                status: "UI/UX Concept",
+                duration: "3 semaines",
+                domains: "UI/UX, Design System",
+                tools: "Figma,Vue Js",
+                moodboard: "Direction visuelle énergique inspirée par l'univers des sports extrêmes et la culture street. Palette de couleurs vibrantes avec des contrastes forts, typographie bold et des images d'action spectaculaires. Utilisation de textures urbaines, de mouvements dynamiques et d'éléments graphiques qui évoquent la vitesse et l'adrénaline.",             
+                heroImage: "./stellar/Capture d'écran 2025-11-16 201403.png",
+                researchItems: [
+                    
+                ],
+                moodboardItems: [
+                    {
+                        image: "./stellar/03e725f009c353acc1306f2f920d0474.jpg",
+                        caption: " "
+                    },
+                    {
+                        image: "./stellar/4cd79623ab6f6a2d0ea74d6abb3472db.jpg",
+                        caption: " "
+                    },
+                    {
+                        image: "./stellar/7358a777fe79cae2d7e91929848dbd4c.jpg",
+                        caption: " "
+                    },
+                    {
+                        image: "./stellar/7340099e471dd832e7fbee2427555925.jpg",
+                        caption: " "
+                    },
+                    {
+                        image: "./stellar/85916735072e7bf9f37a3c3c51b6631e.jpg",
+                        caption: " "
+                    },
+                    {
+                        image: "./stellar/e9d6af6d27b097ca72d67ab8b1eeda37.jpg",
+                        caption: " "
+                    }
+                ],
+                challenges: `
+                    <div class="research-grid">
+                        <div class="research-item">
+                            <div class="research-content">
+                                <h4>Performance & Émotion</h4>
+                                <p>Transmettre la sensation de performance technique tout en créant une connexion émotionnelle avec le rider.</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-content">
+                                <h4>Adrénaline Digitale</h4>
+                                <p>Capturer l'énergie et l'intensité des sports extrêmes dans une expérience web immersive qui parle aux jeunes riders.</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-content">
+                                <h4>Technique vs Accessibilité</h4>
+                                <p>Présenter des spécifications techniques complexes de manière compréhensible pour tous les niveaux de cyclistes.</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-content">
+                                <h4>Immersivité Terrain</h4>
+                                <p>Créer une expérience digitale qui évoque les sensations du trail et la liberté du VTT.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            quantum: {
+                title: "QUANTUM Browser",
+                description: "Navigateur web expérimental explorant les possibilités de la navigation spatiale en 3D. Une reimagination complète de notre relation avec le contenu web.",
+                status: "Prototype Avancé",
+                duration: "12 semaines",
+                domains: "3D Design, Interaction Design, Web Innovation",
+                tools: "Three.js, React Three Fiber, Blender, Framer",
+                research: "Notre recherche explore comment étendre les métaphores spatiales au-delà du simple scrolling. Comment organiser l'information dans un espace tridimensionnel tout en conservant la familiarité du web ?",
+                moodboard: "Inspiration tirée des interfaces holographiques et de la réalité virtuelle. Design lumineux et aérien avec des éléments flottants et des transitions fluides.",
+                challenges: `
+                    <div class="research-grid">
+                        <div class="research-item">
+                            <div class="research-content">
+                                <h4>Paradigme de Navigation</h4>
+                                <p>Réinventer la navigation web sans dérouter les utilisateurs habitués aux patterns traditionnels.</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-content">
+                                <h4>Compatibilité</h4>
+                                <p>Adapter le contenu web 2D traditionnel à un environnement de navigation 3D.</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-content">
+                                <h4>Performance 3D</h4>
+                                <p>Maintenir des performances optimales avec le rendu 3D en temps réel.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        const modal = document.getElementById('projectModal');
+        const closeModal = document.querySelector('.modal-close');
+
+        function populateModal(project) {
+            document.getElementById('projectTitle').textContent = project.title;
+            document.getElementById('projectDescription').textContent = project.description;
+            document.getElementById('projectStatus').textContent = project.status;
+            document.getElementById('projectDuration').textContent = project.duration;
+            document.getElementById('projectDomains').textContent = project.domains;
+            document.getElementById('projectTools').textContent = project.tools;
+            document.getElementById('projectResearch').textContent = project.research;
+            document.getElementById('projectMoodboard').textContent = project.moodboard;
+            document.getElementById('projectChallenges').innerHTML = project.challenges;
+            
+            const modalHero = document.getElementById('modalHero');
+            modalHero.innerHTML = `<img src="${project.heroImage}" class="modal-hero-image" alt="${project.title}">`;
+            
+            const researchGrid = document.getElementById('researchGrid');
+            researchGrid.innerHTML = project.researchItems.map(item => `
+                <div class="research-item">
+                    <div class="research-image">
+                        <img src="${item.image}" alt="${item.title}">
+                    </div>
+                    <div class="research-content">
+                        <h4>${item.title}</h4>
+                        <p>${item.description}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            const moodboardGrid = document.getElementById('moodboardGrid');
+            moodboardGrid.innerHTML = project.moodboardItems.map(item => `
+                <div class="moodboard-item">
+                    <img src="${item.image}" alt="${item.caption}">
+                    <div class="moodboard-caption">${item.caption}</div>
+                </div>
+            `).join('');
+        }
+
+        document.querySelectorAll('.portfolio-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const projectId = this.getAttribute('data-project');
+                const project = projects[projectId];
+                
+                if (project) {
+                    populateModal(project);
+                    
+                    modal.style.display = 'block';
+                    modal.classList.add('modal-open');
+                    setTimeout(() => {
+                        modal.style.opacity = '1';
+                    }, 10);
+                }
+            });
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.opacity = '0';
+                modal.classList.remove('modal-open');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+            }
+        });
+
+        closeModal.addEventListener('click', function() {
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.opacity = '0';
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+            }
+        });
+
+        function createDataNodes() {
+            const container = document.getElementById('dataVisualization');
+            const nodeCount = 50;
+            
+            for (let i = 0; i < nodeCount; i++) {
+                const node = document.createElement('div');
+                node.className = 'data-node';
+                
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const delay = Math.random() * 5;
+                
+                node.style.left = `${left}%`;
+                node.style.top = `${top}%`;
+                node.style.animationDelay = `${delay}s`;
+                
+                const size = 4 + Math.random() * 6;
+                node.style.width = `${size}px`;
+                node.style.height = `${size}px`;
+                
+                const colors = ['#00F0FF', '#FF00E5', '#00FF9D'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                node.style.background = color;
+                
+                container.appendChild(node);
+            }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            createDataNodes();
+        });
+    </script>
+</body>
+</html>
